@@ -1,25 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<title>Ticket Management</title>
+	<meta name="keyword"
+		content="thebooking, air ticket, train, ticket, subway, bus, cheap, fares, sale, off, cashback" />
+	<meta name="description" content=" Buy Airway tickets easily at great deals available online." />
 	<link rel="stylesheet" href="css/style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<script src="../Booking/script/scripts.js" type="text/javascript"></script>
 	<style>
-        body {
-            background-image: url('../Booking/images/1.jpg');
-        }
-    </style>
+		body {
+			background-image: url('../Booking/images/1.jpg');
+		}
+	</style>
 </head>
 
 <body>
+	<div class=h1-image>
+		<h1>Airway Ticket</h1>
+	</div>
+	<div class="sale">
+		<div class="sale-parent">
+			<h2>BONUS</h2>
+		</div>
+		<div class="sale-child">
+			<h3>Collect rewards and Redeem it while travelling next time</h3>
+		</div>
+
+	</div>
 	<div class="nav-bar">
 		<nav>
 			<ul>
-				<li><a href="#">Home</a></li>
+				<li><a href="home.html">Home</a></li>
 				<li><a Class="active" href="index.html">Airways Ticket</a></li>
 				<li><a href="subway.html">Subway Ticket</a></li>
-				<li><a href="#">Bus Ticket</a></li>
-				<li style="float: right;"><a style="background-color: purple;" href="#">About us</a></li>
+				<li><a href="bus.html">Bus Ticket</a></li>
+				<li style="float: right;" onclick="login()"><a style="background-color: purple;" href="#">Login</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -27,9 +44,9 @@
 		<div class="sap_tabs">
 			<div id="horizontalTab">
 				<ul class="r-list">
-					<li class="r-item"><data>Round Trip</data></li>
-					<li class="r-item"><data>One way</data></li>
-					<li class="r-item"><data>Multi city</data></li>
+					<li class="r-item" onclick="onewayair()" id="oneway"><data>One way</data></li>
+					<li class="r-item" onclick="roundwayair()" id="roundtrip"><data>Round Trip</data></li>
+					<li class="r-item" onclick="multicity()" id="muticity"><data>Multi City</data></li>
 				</ul>
 				<div class="clearfix"> </div>
 				<div class="r-container">
@@ -37,24 +54,34 @@
 						<form>
 							<div class="from">
 								<h3>From</h3>
-								<input type="text" name="city" class="city1" placeholder="Type Departure City"
+								<input type="text" name="city1" class="city1" placeholder="Type City"
 									required="">
 							</div>
 							<div class="to">
 								<h3>To</h3>
-								<input type="text" name="city" class="city2" placeholder="Type Destination City">
+								<input type="text" name="city2" class="city2" placeholder="Type Destination City">
 							</div>
 							<div class="clear"></div>
+							<div class="multi">
+							<div class="to">
+								<h3>Point</h3>
+								<input type="text" name="city2" class="city2" placeholder="Type layover City">
+							</div>
+							
+						</div>
 							<div class="date">
 								<div class="depart">
 									<h3>Depart</h3>
 									<input id="datepicker" name="Text" type="text" value="mm/dd/yyyy">
 
 								</div>
-								<div class="return" id="myReturn">
+								<div id="return" class="return">
 									<h3>Return</h3>
 									<input id="datepicker1" name="Text" type="text" value="mm/dd/yyyy">
+
 								</div>
+
+
 								<div class="clear"></div>
 							</div>
 							<div class="class">
@@ -66,31 +93,64 @@
 									<option value="null">First class</option>
 								</select>
 							</div>
-							<input type="submit" value="Search Flights">
+							<div class="clear"></div>
+							<div class="numofppl">
+								<div class="adults">
+									<h3>Adult:(12+ yrs)</h3>
+									<div class="quantity">
+										<div class="quantity-select">
+											<div class="entry value-minus" onclick="valueminus()">&nbsp;</div>
+											<div class="entry value"><span id="zero-a">0</span></div>
+											<div class="entry value-plus active" onclick="valueplus()">&nbsp;</div>
+										</div>
+									</div>
+								</div>
+								<div class="child">
+									<h3>Child:(2-11 yrs)</h3>
+									<div class="quantity">
+										<div class="quantity-select">
+											<div class="entry value-minus" onclick="valueminus1()">&nbsp;</div>
+											<div class="entry value"><span id="zero-c">0</span></div>
+											<div class="entry value-plus active" onclick="valueplus1()">&nbsp;</div>
+										</div>
+									</div>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="clear"></div>
+							
+							<input type="submit" value="Search Flights" onclick="Airsubmit()">
 						</form>
 					</div>
-
 				</div>
+
 			</div>
 
+
 		</div>
+
+	</div>
+
+	</div>
 	</div>
 	</div>
 
 	<div class="video-add">
+		<h3>Instructions</h3>
 		<div><video controls src="images/v1.mp4"></video></div>
 	</div>
 
 	<footer>
 		<div class=footer-left>
 			<img src="images/logo.png" />
-
+			<article style="color: white;">
+				<p class="align-article"> We provide the best services across the world</p>
+			</article>
 
 		</div>
 		<div class="footer-cen">
-			<article>
-				<p class="align-article"> We provide the best services across the world</p>
-			</article>
+
+
 		</div>
 		<div class="footer-right">
 
@@ -98,8 +158,54 @@
 
 
 	</footer>
+	<div class="login" id=login>
+		<div class="inner-login">
+			<form>
+				<div onclick="hidelogin()" ><p style="color: white;">[Close]</p></div>
+				<h3>Login</h3>
+				<div class="from">
+					<h3>Username</h3>
+					<input type="text" name="loginname" class="loginname" placeholder="Type Alias" required="">
+				</div>
+				<div class="to">
+					<h3>Password</h3>
+					<input type="password" name="pass" class="pass" placeholder="Type Password">
+				</div>
+				<input type="submit" value="Login">
+				<div class="clear"></div>
+				<a href="" >Forgot Password</a>
+			</form>
+		</div>
+	</div>
+	<script>
+		var value = document.getElementById("zero-a"),
+			count = 0;
+		var value1 = document.getElementById("zero-c"),
+			count1 = 0;
+
+		function valueminus1() {
+			if (count1 > 0) {
+				count1 -= 1;
+				value1.innerHTML = count1;
+			}
+		};
+		function valueplus1() {
+			count1 += 1;
+			value1.innerHTML = count1;
+		}
 
 
+		function valueminus() {
+			if (count > 0) {
+				count -= 1;
+				value.innerHTML = count;
+			}
+		};
+		function valueplus() {
+			count += 1;
+			value.innerHTML = count;
+		}
+	</script>
 </body>
 
 </html>
